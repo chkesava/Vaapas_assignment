@@ -4,7 +4,9 @@ import { CssBaseline, Container, Typography, Switch, FormControlLabel, Box, Circ
 import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
 import ScrollToTop from './components/ScrollToTop';
+import Footer from './components/footer';
 import { fetchMovies } from './api';
+import './App.css'; // Import the CSS file for the sticky footer
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -17,10 +19,10 @@ const App = () => {
         palette: {
           mode: darkMode ? 'dark' : 'light',
           primary: {
-            main: darkMode ? '#03dac6' : '#6200ea', // Adjusted primary color
+            main: darkMode ? '#03dac6' : '#6200ea',
           },
           secondary: {
-            main: darkMode ? '#f48fb1' : '#03dac6', // Adjusted secondary color
+            main: darkMode ? '#f48fb1' : '#03dac6',
           },
           background: {
             default: darkMode ? '#121212' : '#f5f5f5',
@@ -48,7 +50,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container>
+      <Container className="app-container">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2, mb: 2 }}>
           <Typography variant="h4" component="h1" align="center" sx={{ color: theme.palette.primary.main }}>
             Movie Search
@@ -69,6 +71,7 @@ const App = () => {
         )}
         <ScrollToTop />
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };
